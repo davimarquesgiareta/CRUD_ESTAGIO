@@ -1,0 +1,26 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon",
+    "production": "pm2 start index.js --name knowledge-backend"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "1.18.3",
+    "consign": "0.1.6",
+    "cors": "2.8.4",
+    "express": "4.16.3",
+    "express-handlebars": "^5.3.0",
+    "knex": "0.95.0",
+    "pg": "7.4.3",
+    "pm2": "3.0.4"
+  },
+  "devDependencies": {
+    "nodemon": "1.18.4"
+  }
+}

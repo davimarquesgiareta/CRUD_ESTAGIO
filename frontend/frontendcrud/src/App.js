@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import './App.css';
 import Axios from 'axios';
 var idaux=0
+var variavel = "yellow"
 
 function App() {
   var subButton = document.getElementById("subButton")
@@ -98,9 +99,16 @@ function App() {
         <button id="updateButton" onClick={updateProduct}>Save</button>
 
       </div>
+
+      
       {productsList.map((val)=>{
+        let flagColor = ""
+        if (val.quantity<10){flagColor = "red"}
+        else if(val.quantity>10){flagColor = "yellow"}
+        else if(val.quantity==10){flagColor = "green"}
           return(
-            <div className="card"> 
+            
+            <div className={ `${flagColor}`}> 
             <h2>id: {val.id}</h2>
             <h1>Name: {val.name}</h1>
             <p>Description: {val.description} </p>

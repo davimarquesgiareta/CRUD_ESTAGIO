@@ -103,19 +103,24 @@ function App() {
       
       {productsList.map((val)=>{
         let flagColor = ""
-        if (val.quantity<10){flagColor = "red"}
-        else if(val.quantity>10){flagColor = "yellow"}
-        else if(val.quantity==10){flagColor = "green"}
+        let badgeColor = ""
+        let status = ""
+        if (val.quantity<20){badgeColor= "badgered" 
+        status="CRITIC"}
+        else if(val.quantity>=21 && val.quantity<=50){badgeColor= "badgeyellow"
+        status="WARNING"}
+        else if(val.quantity>51){badgeColor= "badgegreen"
+        status="OK"}
           return(
-            
-            <div className={ `${flagColor}`}> 
-            <h2>id: {val.id}</h2>
+            <div className={"card"}> 
             <h1>Name: {val.name}</h1>
             <p>Description: {val.description} </p>
             <p>Price: <b>{val.price} </b></p>
             <p>Quantity: <b>{val.quantity}</b></p>
-            <button onClick={ (e)=> deleteProduct(val.id)}>Delete</button>
-            <button onClick={ (e)=> updateForm(
+            <span className={`${badgeColor}`}> Status: {status}</span>
+            <br></br>
+            <button className="deleteButton" onClick={ (e)=> deleteProduct(val.id)}>Delete</button>
+            <button className="updateButton" onClick={ (e)=> updateForm(
               {id: val.id,
               name: val.name, 
               description: val.description,

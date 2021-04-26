@@ -1,8 +1,13 @@
 import React, {useState, useEffect} from "react";
+import { Button } from '@material-ui/core';
+
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
 import './App.css';
 import Axios from 'axios';
+
+
 var idaux=0
-var variavel = "yellow"
 
 function App() {
   var subButton = document.getElementById("subButton")
@@ -77,6 +82,8 @@ function App() {
   window.location.href = '/'
  }
 
+
+
   return (
     <div className="App">
       <div className="form" id="productForm">
@@ -96,40 +103,57 @@ function App() {
 
        
         <button id="subButton" onClick={submitProduct}>Submit</button>
-        <button id="updateButton" onClick={updateProduct}>Save</button>
-
+        <button id="updateButton" onClick={updateProduct}>Save Changes</button>
+        
       </div>
 
       
       {productsList.map((val)=>{
-        let flagColor = ""
+        
         let badgeColor = ""
         let status = ""
-        if (val.quantity<20){badgeColor= "badgered" 
+        if (val.quantity<=20){badgeColor= "badgered" 
         status="CRITIC"}
         else if(val.quantity>=21 && val.quantity<=50){badgeColor= "badgeyellow"
         status="WARNING"}
-        else if(val.quantity>51){badgeColor= "badgegreen"
+        else if(val.quantity >=51){badgeColor= "badgegreen"
         status="OK"}
-          return(
+
+        return(
+          
             <div className={"card"}> 
             <h1>Name: {val.name}</h1>
-            <p>Description: {val.description} </p>
-            <p>Price: <b>{val.price} </b></p>
+            <p>Description: <b>{val.description}</b> </p>
+            <p>Price: R$<b>{val.price} </b></p>
             <p>Quantity: <b>{val.quantity}</b></p>
-            <span className={`${badgeColor}`}> Status: {status}</span>
+            <label className={`${badgeColor}`}>Status: {status}</label>
             <br></br>
-            <button className="deleteButton" onClick={ (e)=> deleteProduct(val.id)}>Delete</button>
-            <button className="updateButton" onClick={ (e)=> updateForm(
+
+            <div className="buttonsCard">
+            <Button className="deleteButton"
+             onClick={ (e)=> deleteProduct(val.id)}
+            variant="contained" 
+            color="secondary" 
+            startIcon={<DeleteIcon/>}>
+             Delete
+            </Button>
+
+            <Button
+            variant="contained"
+            color="default"
+            startIcon={<EditIcon/>}
+            className="updateButton"
+            onClick={ (e)=> updateForm(
               {id: val.id,
               name: val.name, 
               description: val.description,
               price: val.price,
               quantity: val.quantity}
-            )
-              }>Update</button>
+            )}
+            >Update</Button>
             </div>
             
+            </div>
           ) 
         })} 
     </div>

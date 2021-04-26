@@ -54,6 +54,7 @@ p{
   background-color: rgba(11, 252, 11, 0.815);
   color: black;
   border-radius: 9px;
+  width: 250px;
 
 }
 
@@ -89,16 +90,27 @@ p{
   background-color: tomato;
 }
 
-.updateButton{
-  margin-top: 1em;
-  height: 35px;
-  width: 200px;
-  border-radius: 10px;
-  font-size: large;
-  background-color: white;
-  color:crimson;
+#updateButton{
+  font-family: 'Trebuchet MS';
+  background-color: rgb(236, 130, 31);
+  color: white;
+  width: 150px;
+  height: 45px;
+  font-size: larger;
+  font-weight: bolder;
 }
 
-.updateButton:hover{
-  background-color:rgba(128, 128, 128, 0.692);
+.buttonsCard{
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
+
+#subButton{
+  font-family: 'Trebuchet MS';
+  background-color: rgb(54, 73, 180);
+  color: white;
+  width: 150px;
+  height: 45px;
+  font-size: larger;
+}
+
